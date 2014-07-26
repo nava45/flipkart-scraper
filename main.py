@@ -39,3 +39,4 @@ if __name__ == '__main__':
         start()
     finally:
         driver.close()
+        fo.close()
