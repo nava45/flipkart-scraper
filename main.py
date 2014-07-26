@@ -12,8 +12,9 @@ def close(signal, frame):
     global driver
     print('You pressed Ctrl+C!')
     driver.close()
-    sys.exit(0)
     signal.pause()
+    sys.exit(0)
+ 
 
 def get_page(url, keyword="moto g"):
     global driver
