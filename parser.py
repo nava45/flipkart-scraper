@@ -2,35 +2,33 @@ from lxml import etree
 
 class FParser(object):
     def __init__(self, page, pformat='html'):
-        self.data = page
+        self.data = page.replace('<b>','').replace('</b>','')
         self.data_format = pformat
         self.dom = etree.HTML(self.data)
+        self.products_xpath = '//div[@id="products"]'
+        self.product_col_xpath = '//div[@class="gd-col gu3"]'
+        self.title_path = '//a[@data-tracking-id="prd_title"]/text()'
+        self.ratings_path = '//div[@class="pu-rating"]/text()'
+        self.price_path = '//span[@class="fk-font-17 fk-bold"]/text()'
 
     def __parse(self):
         pass
 
-    def __extracted_dom(self, xpath):
-        res = self.dom.xpath(xpath)
-        return res[0] if res else None
-    
-    def items(self, xpath_string):
-        ctx = etree.iterwalk(self.__extracted_dom(xpath_string), events=('start',))
-        products = []
-        for event,element in ctx:
-            item_layer = {'id':'','name':'','price':'','rating':'','available':'', 'text':''}
-            if element.attrib.has_key('id'):
-                print element.attrib,element.tag
-                print "*" * 20
-                if element.attrib['id']:
-                    item_layer['id'] = element.attrib['id']
-                    products.append(item_layer)
-                    s = ''
-                    for i in element.itertext():
-                        s += i.strip()
-                    item_layer['text'] = s
-             
+    def get_all_cols(self, xp):
+        prod = self.dom.xpath(self.products_xpath)
+        if prod:
+            prod = prod[0]
+            return prod.xpath(xp) 
 
-        return products
+    def items(self, xpath_string):
+        #ctx = etree.iterwalk(self.__extracted_dom(xpath_string), events=('start',))
+        #products = []
+
+        pitems = self.get_all_cols(self.product_col_xpath)
+        if pitems:
+            return pitems
+        
+        #return products
 
 
 
