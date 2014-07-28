@@ -1,4 +1,5 @@
 from lxml import etree
+from itertools import izip_longest
 
 class FParser(object):
     def __init__(self, page, pformat='html'):
@@ -20,20 +21,23 @@ class FParser(object):
             prod = prod[0]
             return prod.xpath(xp) 
 
-    def items(self, xpath_string):
-        #ctx = etree.iterwalk(self.__extracted_dom(xpath_string), events=('start',))
-        #products = []
-
+    def items(self):
+      
         pitems = self.get_all_cols(self.product_col_xpath)
         if pitems:
-            return pitems
+            titles = [_.strip() for _ in pitems[0].xpath(self.title_path)]
+            ratings = pitems[0].xpath(self.ratings_path)
+            prices = pitems[0].xpath(self.price_path)
+            #print "name list:",titles
+            #print "rating list:",ratings
+            #print "price list:",prices
+            for i in izip_longest(titles,ratings,prices):
+                yield i
         
         #return products
 
 
-
-products_xpath = "//div[@id='products']"
-
 data = open('out.html','rb').read()
 fp = FParser(data)
-print fp.items(products_xpath)
+for i in fp.items():
+    print i,
