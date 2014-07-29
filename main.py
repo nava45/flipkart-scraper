@@ -9,15 +9,12 @@ import sys
 import time
 
 driver = webdriver.Firefox()
-fo = open('out.txt', 'w')
-
 
 def close(signal, frame):
     global driver
     print('You pressed Ctrl+C!')
     driver.close()
     signal.pause()
-    fo.close()
     sys.exit(0)
     
 
@@ -38,4 +35,3 @@ if __name__ == '__main__':
         start('moto g')
     finally:
         driver.close()
-        fo.close()
