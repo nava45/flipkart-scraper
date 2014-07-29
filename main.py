@@ -1,11 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+from config import URL_FORMAT
+from parser import FParser
+
 import signal
 import sys
 import time
 
-url = "http://www.flipkart.com/search?q=%s&as=off&as-show=on&otracker=start"
 driver = webdriver.Firefox()
 fo = open('out.txt', 'w')
 
@@ -19,24 +21,21 @@ def close(signal, frame):
     sys.exit(0)
     
 
-def get_page(url, keyword="moto g"):
+def get_page(url):
     global driver
-    driver.get(url % keyword)
+    driver.get(url)
     return driver.page_source
 
-def parser(input):
-    print "html recorded"
-    print >> fo, 'data',input.encode('utf-8',errors='ignore')
-
-def start():
-    html_data = get_page(url)
-    result = parser(html_data)
-    time.sleep(20)
+def start(keyword):
+    html_data = get_page(URL_FORMAT % keyword)
+    parser = FParser(html_data)
+    parser.store() #store into db
+    time.sleep(2)
 
 if __name__ == '__main__':
     try:
         signal.signal(signal.SIGINT, close)
-        start()
+        start('moto g')
     finally:
         driver.close()
         fo.close()

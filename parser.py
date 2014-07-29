@@ -38,10 +38,15 @@ class FParser(object):
             #print "price list:",prices
             for i in izip_longest(titles,ratings,prices,landing_page_url):
                 yield i
-        
-        #return products
+    
+    def store(self):
+        for i in self.items():
+            if i:
+                data_layer = MONGO_STORAGE_INPUT_DICT
+                data_layer['name'],data_layer['price'],data_layer['rating'],data_layer['url'] = i
+                insert(data_layer)
 
-
+"""
 data = open('out.html','rb').read()
 fp = FParser(data)
 for i in fp.items():
@@ -49,3 +54,4 @@ for i in fp.items():
         data_layer = MONGO_STORAGE_INPUT_DICT
         data_layer['name'],data_layer['price'],data_layer['rating'],data_layer['url'] = i
         insert(data_layer)
+"""
