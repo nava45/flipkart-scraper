@@ -33,11 +33,13 @@ class FParser(object):
       
         pitems = self.get_all_cols(self.product_col_xpath)
         if pitems:
+            #Grid view
             titles = self.__get_matches_list(pitems[0], self.title_path)
             ratings = self.__get_matches_list(pitems[0], self.ratings_path)
             prices = self.__get_matches_list(pitems[0], self.price_path)
             landing_page_url = self.__get_matches_list(pitems[0], self.product_url)
         else:
+            #list view
             titles = self.__get_matches_list(self.prod, self.title_path)
             ratings = self.__get_matches_list(self.prod, self.ratings_path)
             prices = self.__get_matches_list(self.prod, self.price_path)
