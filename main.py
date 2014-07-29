@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 
 from config import URL_FORMAT, SCROLL_TIMES
 from parser import FParser
+from optparse import OptionParser
 
 import signal
 import sys
@@ -48,9 +49,15 @@ def press_the_button_2_crawl(driver, keyword):
 
 
 if __name__ == '__main__':
+    optparser = OptionParser()
+    optparser.add_option("-s", "--search",
+                    type="string", dest="search")
+    (options, args) = optparser.parse_args()
+    keyword = options.search or 'moto g'
+    print "Keyword",keyword
     try:
         driver = webdriver.Firefox()
         signal.signal(signal.SIGINT, close)
-        press_the_button_2_crawl(driver,'moto g')
+        press_the_button_2_crawl(driver, keyword)
     finally:
         driver.close()
