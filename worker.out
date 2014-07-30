@@ -1,0 +1,2 @@
+Exception AttributeError: "'Service' object has no attribute 'process'" in <bound method Service.__del__ of <selenium.webdriver.phantomjs.service.Service object at 0x7f998766cd50>> ignored
+Exception AttributeError: "'Service' object has no attribute 'process'" in <bound method Service.__del__ of <selenium.webdriver.phantomjs.service.Service object at 0x7f998766ce50>> ignored
