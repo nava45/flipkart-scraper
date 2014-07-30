@@ -30,6 +30,8 @@ Tools:
 
 :)
 
+> lxml, mongodb, redis are the required system packages to be installed to execute it, after just run `pip install -r requirements.txt`.
+
 How to execute this project?
 ----------------------------
 
