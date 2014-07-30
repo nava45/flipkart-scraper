@@ -40,10 +40,10 @@ you can even customize for your case.
 
 Features:
 ---------
-1. Simple interface
-2 .Re-Crawl option available to the user
-3 .Case-insensitive search 
-4 .easy expandable
+- Simple interface
+- Re-Crawl option available to the user
+- Case-insensitive search 
+- easy expandable
 
 Screenshots:
 ------------
