@@ -32,6 +32,7 @@ def insert(input_dict):
 
 
 def fetch_by_name(name):
+    print "Name:",name
     result = []
     table = connect_to_db(collection=True)
     regex = '.*'+name+'.*'
