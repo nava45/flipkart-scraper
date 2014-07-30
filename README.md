@@ -12,7 +12,7 @@ execute the crawler only in this way:
 Description:
 ------------
 
-This is a simple python based project which is used to scrape the flipkart search results by scrolling flipkart official pages.This project will contain some historical data.If you keep this crawler running in your server, this automatically scrapes the data from flipkart website. Once you started gathering the data, you could do run many analysis like price range variation, offers, review analysis etc..
+This is a simple python based project which is used to scrape the flipkart search results page. Also it does the scrolling to navigate into next page to crawl the data.This project has been implemented with mighty technologies like mongodb, redis, python, flask. It will be helpful to collect some historical data from flipkart.If you keep this crawler running in your server, this automatically scrapes the data for the user's keyword from flipkart website. Once you started gathering the data, you could do run many analysis like price range variation, offers, review analysis etc..
 
 in `screenshots` directory we have uploaded our first version screenshots. you can take a look and give us the feedback.
 
@@ -44,6 +44,8 @@ Features:
 - Re-Crawl option available to the user
 - Case-insensitive search 
 - easy expandable
+
+we have been working for further releases for the extensive use of customers.
 
 Screenshots:
 ------------
