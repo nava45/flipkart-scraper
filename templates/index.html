@@ -18,6 +18,25 @@
 
 <script src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }}"></script>
 
+<style>
+.form-control {
+     display: block;
+     height: 48px;
+     padding: 6px 12px;
+     width: 400px;
+     border: 4px solid #45416D;
+     border-radius: 19px;
+}
+.center-display{
+     margin:auto;
+     position:absolute;
+     top:0;
+     bottom:0;
+     right:0;
+     left:0;
+}
+</style>
+
 </head>
 
 <body>
@@ -28,9 +47,19 @@
 
       <div class="starter-template">
         <h1>Flipkart Scraper</h1>
-        <p class="lead">Use this crawled data from flipkart.com<br> All you get is price and ratings of the items that were biten already.</p>
+        <p class="lead small">Use this crawled data from flipkart.com<br> All you get is price and ratings of the items that were biten already.</p>
       </div>
 
+      <form class="form" action="" method="post" name="new-service" enctype=multipart/form-data>
+      <div class="control-group">
+          
+          <div class="controls">
+               <input id="Search" name="Search" type="text" placeholder="Search.. eg: moto g" class="form-control input-xlarge search-query center-display" required="">
+          </div>
+     </div>
+      
+      </form>
+      
     </div><!-- /.container -->
 </body>
 </html>

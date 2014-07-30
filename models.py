@@ -1,5 +1,6 @@
-from pymongo import Connection
+from pymongo import Connection, DESCENDING
 from datetime import datetime
+import re
 
 class MongoException(Exception):
     def __init__(self, error):
@@ -28,3 +29,12 @@ def insert(input_dict):
                   'rating':input_dict.get('rating',None),\
                     'url':input_dict.get('url',None)
               }, safe=True)
+
+
+def fetch_by_name(name):
+    result = []
+    table = connect_to_db(collection=True)
+    regex = '.*'+name+'.*'
+    for row in table.find({"name": re.compile(regex, re.IGNORECASE)}).sort('crawled_at',DESCENDING):
+        result.append(row)
+    return result
