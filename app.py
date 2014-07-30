@@ -3,6 +3,7 @@ from redis import Redis
 
 from models import fetch_by_name
 from main import crawler_machine
+from config import REDIS_CRAWLER_KEY
 
 import os
 
@@ -37,7 +38,7 @@ def view_search():
 def recrawl():
     kw = request.args.get('search',None)
     if kw:
-        redis.lpush('crawling_keywords',kw)
+        redis.lpush(REDIS_CRAWLER_KEY,kw)
         #crawler_machine(kw)
         flash("you have rescheduled it for '%s'.It will happen sooner or later" %kw)
     return redirect(url_for('.view_search'))

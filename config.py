@@ -10,3 +10,4 @@ MONGO_STORAGE_INPUT_DICT = {
                     'rating':'',
                     'url':''
                 }
+REDIS_CRAWLER_KEY = 'crawling_keywords'
