@@ -38,7 +38,7 @@ def view_search():
 def recrawl():
     kw = request.args.get('search',None)
     if kw:
-        redis.lpush(REDIS_CRAWLER_KEY,kw)
+        redis.sadd(REDIS_CRAWLER_KEY,kw)
         #crawler_machine(kw)
         flash("you have rescheduled it for '%s'.It will happen sooner or later" %kw)
     return redirect(url_for('.view_search'))

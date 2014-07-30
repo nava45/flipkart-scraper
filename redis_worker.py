@@ -7,7 +7,7 @@ redis = Redis()
 
 def work():
     while 1:
-        msg = redis.lpop(REDIS_CRAWLER_KEY)
+        msg = redis.spop(REDIS_CRAWLER_KEY)
         crawler_machine(msg)
 
 if __name__ == '__main__':
