@@ -57,10 +57,10 @@ def crawler_machine(search_word=None):
         keyword = options.search or search_word
         print "Keyword",keyword
         try:
-            if WEBDRIVER == 'phantomjs':
+            try:
                 #headless phantomjs for 32bit unix based machines
                 driver =  webdriver.PhantomJS(executable_path=PHANTOM_JS_PATH)
-            else:
+            except:
                 #firefox
                 driver = webdriver.Firefox()
                 
