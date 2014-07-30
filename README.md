@@ -14,6 +14,8 @@ Description:
 
 This is a simple python based project which is used to scrape the flipkart search results by scrolling flipkart official pages.This project will contain some historical data.If you keep this crawler running in your server, this automatically scrapes the data from flipkart website. Once you started gathering the data, you could do run many analysis like price range variation, offers, review analysis etc..
 
+in `screenshots` directory we have uploaded our first version screenshots. you can take a look and give us the feedback.
+
 Tools:
 ------
 
