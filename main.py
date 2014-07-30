@@ -47,17 +47,21 @@ def press_the_button_2_crawl(driver, keyword):
     parser.store() #store into db
     time.sleep(2)
 
+def crawler_machine(search_word=None):
+        optparser = OptionParser()
+        optparser.add_option("-s", "--search",
+                        type="string", dest="search")
+        (options, args) = optparser.parse_args()
+        keyword = options.search or search_word
+        print "Keyword",keyword
+        try:
+            driver = webdriver.Firefox()
+            signal.signal(signal.SIGINT, close)
+            press_the_button_2_crawl(driver, keyword)
+        finally:
+            driver.close() 
+
 
 if __name__ == '__main__':
-    optparser = OptionParser()
-    optparser.add_option("-s", "--search",
-                    type="string", dest="search")
-    (options, args) = optparser.parse_args()
-    keyword = options.search or 'moto g'
-    print "Keyword",keyword
-    try:
-        driver = webdriver.Firefox()
-        signal.signal(signal.SIGINT, close)
-        press_the_button_2_crawl(driver, keyword)
-    finally:
-        driver.close()
+    
+    crawler_machine()
