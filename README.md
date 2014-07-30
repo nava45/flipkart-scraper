@@ -37,4 +37,24 @@ How to execute this project?
 `$ ./start.sh` in your shell will do the job.It runs the `redis_worker.py` and `flask` app.
 you can even customize for your case.
 
+
+Features:
+---------
+1. Simple interface
+2 .Re-Crawl option available to the user
+3 .Case-insensitive search 
+4 .easy expandable
+
+Screenshots:
+------------
+###Demo:
+
+
+![Flipkart Scraper Demo](https://raw.githubusercontent.com/nava45/flipkart-scraper/master/screenshots/A%20Snake's%20Flipkart%20Scraper%20Demo.png)
+
+###Re-Crawl:
+
+![CrawlReschedule](https://raw.githubusercontent.com/nava45/flipkart-scraper/master/screenshots/Crawlschedule.png)
+
+
 Thanks for your time.
