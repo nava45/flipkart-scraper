@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-from config import URL_FORMAT, SCROLL_TIMES
+from config import URL_FORMAT, SCROLL_TIMES, PHANTOM_JS_PATH, WEBDRIVER
 from parser import FParser
 from optparse import OptionParser
 
@@ -57,7 +57,13 @@ def crawler_machine(search_word=None):
         keyword = options.search or search_word
         print "Keyword",keyword
         try:
-            driver = webdriver.Firefox()
+            if WEBDRIVER == 'phantomjs':
+                #headless phantomjs for 32bit unix based machines
+                driver =  webdriver.PhantomJS(executable_path=PHANTOM_JS_PATH)
+            else:
+                #firefox
+                driver = webdriver.Firefox()
+                
             signal.signal(signal.SIGINT, close)
             press_the_button_2_crawl(driver, keyword)
         finally:

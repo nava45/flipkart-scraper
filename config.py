@@ -11,3 +11,6 @@ MONGO_STORAGE_INPUT_DICT = {
                     'url':''
                 }
 REDIS_CRAWLER_KEY = 'crawling_keywords'
+
+PHANTOM_JS_PATH = './phantomjs/bin/phantomjs'
+WEBDRIVER = 'phantomjs'
