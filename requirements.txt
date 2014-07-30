@@ -1,0 +1,10 @@
+Flask==0.10.1
+Jinja2==2.7.2
+Werkzeug==0.8.3
+decorator==3.4.0
+gunicorn==0.17.2
+python-openid==2.2.5
+selenium==2.42.1
+redis==2.10.1
+pymongo==2.6.3
+argparse==1.2.1
