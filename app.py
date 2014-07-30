@@ -12,7 +12,7 @@ def view_search():
     print "Input:",keyword
     if keyword:
         search_results = fetch_by_name(keyword)
-    return render_template('index.html', search_results=search_results)
+    return render_template('index.html', search_results=search_results, keyword=keyword)
 
 if __name__ == '__main__':
     app.run(port=8802)
