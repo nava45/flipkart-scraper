@@ -48,6 +48,8 @@ def press_the_button_2_crawl(driver, keyword):
     time.sleep(2)
 
 def crawler_machine(search_word=None):
+        global driver
+        
         optparser = OptionParser()
         optparser.add_option("-s", "--search",
                         type="string", dest="search")
