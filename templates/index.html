@@ -74,7 +74,7 @@
       
       <div class='results'>
           <h3>{{search_results|length}} Search Results Found...</h3>
-          <p class="lead small" style="background-color: yellow;">These below values were real when the crawling happened at the specific duration('crawled_at').Now these values may vary.</p>
+          <p class="lead small" style="background-color: yellow;">These below values were real when the crawling happened at the specific duration('crawled_at').Now these values may vary or may not.</p>
           <table class="table table-striped table-responsive table-hover table-bordered">
                <tr>
                     <th>Item</th>
@@ -91,7 +91,7 @@
                     </tr>     
                {% endfor %}
           </table>
-           <p class="lead small" style="background-color: yellow;">If you are not happy with values. you may <a href="/recrawl?search={{keyword}}">recrawl</a> now or later.</p> 
+           <p class="lead small" style="background-color: yellow;">If you are not happy with available results. you may <a href="/recrawl?search={{keyword}}">recrawl</a> now or later.</p> 
       </div>
       
     </div><!-- /.container -->

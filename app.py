@@ -40,7 +40,7 @@ def recrawl():
     if kw is not None:
         redis.sadd(REDIS_CRAWLER_KEY,kw)
         #crawler_machine(kw)
-        flash("you have rescheduled it for '%s'.It will happen sooner or later" %kw)
+        flash("you have rescheduled the crawler for '%s'.It will happen sooner or later." %kw)
     return redirect(url_for('.view_search'))
 
 
