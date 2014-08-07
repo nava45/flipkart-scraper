@@ -1,0 +1,48 @@
+ * Running on http://127.0.0.1:8802/
+ * Restarting with reloader
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET / HTTP/1.1" 302 -
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET /static/js/jquery-2.1.0.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET /static/images/favicon.png HTTP/1.1" 404 -
+127.0.0.1 - - [30/Jul/2014 21:48:11] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:48:19] "POST /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:48:22] "GET /recrawl?search=lenova HTTP/1.1" 302 -
+127.0.0.1 - - [30/Jul/2014 21:48:22] "GET /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:49:32] "POST /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 21:55:47] "POST /search HTTP/1.1" 200 -
+ * Detected change in '/home/nava/work/flipkart-scraper/main.py', reloading
+Input: None
+Input: lenova
+Name: lenova
+Input: None
+Input: lenova
+Name: lenova
+Input: lenova
+Name: lenova
+ * Restarting with reloader
+ * Detected change in '/home/nava/work/flipkart-scraper/config.py', reloading
+ * Restarting with reloader
+Traceback (most recent call last):
+  File "app.py", line 5, in <module>
+    from main import crawler_machine
+  File "/home/nava/work/flipkart-scraper/main.py", line 4, in <module>
+    from config import URL_FORMAT, SCROLL_TIMES, PHANTOM_JS_PATH, WEBDRIVER
+  File "/home/nava/work/flipkart-scraper/config.py", line 24
+    
+    ^
+IndentationError: expected an indented block
+ * Running on http://127.0.0.1:8802/
+ * Restarting with reloader
+127.0.0.1 - - [30/Jul/2014 22:09:08] "GET /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 22:09:08] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 -
+127.0.0.1 - - [30/Jul/2014 22:09:08] "GET /static/js/jquery-2.1.0.min.js HTTP/1.1" 304 -
+127.0.0.1 - - [30/Jul/2014 22:09:12] "POST /search HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jul/2014 22:09:14] "GET /recrawl?search=lenova HTTP/1.1" 302 -
+127.0.0.1 - - [30/Jul/2014 22:09:14] "GET /search HTTP/1.1" 200 -
+ * Detected change in '/home/nava/work/flipkart-scraper/main.py', reloading
+Input: None
+Input: lenova
+Name: lenova
+Input: None
+ * Restarting with reloader
