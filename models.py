@@ -1,6 +1,8 @@
 from pymongo import Connection, DESCENDING
 from datetime import datetime
+from bson import json_util
 import re
+import json
 
 class MongoException(Exception):
     def __init__(self, error):
@@ -31,11 +33,13 @@ def insert(input_dict):
               }, safe=True)
 
 
-def fetch_by_name(name):
+def fetch_by_name(name, _as=None):
     print "Name:",name
     result = []
     table = connect_to_db(collection=True)
     regex = '.*'+name+'.*'
     for row in table.find({"name": re.compile(regex, re.IGNORECASE)}).sort('crawled_at',DESCENDING):
         result.append(row)
+    if _as == 'json':
+        return json.dumps({name:result}, default=json_util.default)
     return result

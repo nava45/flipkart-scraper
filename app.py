@@ -3,9 +3,10 @@ from redis import Redis
 
 from models import fetch_by_name
 from main import crawler_machine
-from config import REDIS_CRAWLER_KEY
+from config import REDIS_CRAWLER_KEY,REDIS_RECENT_SEARCHES,MAX_RECENT_SEARCH_ITEMS
 
 import os
+import json
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get('SECRET_KEY') or 't0p s3cr3t'
@@ -29,8 +30,9 @@ def index():
 def view_search():
     keyword = request.form.get('Search',None)
     search_results = ''
-    print "Input:",keyword
+    #print "Input:",keyword
     if keyword:
+        redis.lpush(REDIS_RECENT_SEARCHES,keyword)
         search_results = fetch_by_name(keyword)
     return render_template('index.html', search_results=search_results, keyword=keyword)
 
@@ -43,6 +45,19 @@ def recrawl():
         flash("you have rescheduled it for '%s'.It will happen sooner or later" %kw)
     return redirect(url_for('.view_search'))
 
+
+@app.route('/get', methods=('GET', 'POST'))
+def service():
+    name = request.args.get('name',None)
+    if name:
+        return fetch_by_name(name, _as='json')
+    return []
+
+
+@app.route('/recent', methods=('GET', 'POST'))
+def recent():
+    result = redis.lrange(REDIS_RECENT_SEARCHES, 0, MAX_RECENT_SEARCH_ITEMS)
+    return json.dumps({'recent':result})
 
 
 if __name__ == '__main__':
