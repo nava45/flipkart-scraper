@@ -4,6 +4,8 @@ from itertools import izip_longest
 from config import MONGO_STORAGE_INPUT_DICT
 from models import insert
 
+#TODO: Make sure price, rating are aligned for the item
+
 class FParser(object):
     def __init__(self, page, pformat='html'):
         self.data = page.replace('<b>','').replace('</b>','')
@@ -57,12 +59,28 @@ class FParser(object):
                 data_layer['name'],data_layer['price'],data_layer['url'],data_layer['rating'] = i
                 insert(data_layer)
 
+
+class Amazon(FParser):
+    def __init__(self, page, pformat='html'):
+        self.data = page.replace('<b>','').replace('</b>','')
+        self.data_format = pformat
+        self.dom = etree.HTML(self.data)
+        self.products_xpath = '//ul[@id="s-results-list-atf"]'
+        self.product_col_xpath = '//li[@class="s-result-item"]'
+        self.title_path = '//h2[@class="a-size-medium a-color-null s-inline s-access-title a-text-normal"]/text()'
+        #ratings xpath are approximate only not perfect
+        self.ratings_path = '//i[@class="a-icon a-icon-star a-star-5"]/text()'
+        self.price_path = '//span[@class="a-size-base a-color-price s-price a-text-bold"]/text()'
+        self.product_url = '//a[@class="a-link-normal s-access-detail-page  a-text-normal"]/@href'
+
+
 """
 data = open('out.html','rb').read()
-fp = FParser(data)
+fp = Amazon(data)
 for i in fp.items():
     if i:
         data_layer = MONGO_STORAGE_INPUT_DICT
         data_layer['name'],data_layer['price'],data_layer['rating'],data_layer['url'] = i
-        insert(data_layer)
+        print data_layer
+        #insert(data_layer)
 """

@@ -1,0 +1,10 @@
+from config import URL_FORMAT
+
+class BaseCrawler(object):
+    url = ""
+    
+    def next_page_url(self, page_num=1):
+        raise NotImplementedError("Implement")
+    
+class Crawler(BaseCrawler):
+    url = "http://www.amazon.in/s/ref=sr_pg_4?&page=%(page)s&keywords=%(search)s"
